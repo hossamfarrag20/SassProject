@@ -1,12 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./Card.module.css";
-
+import myimage from "../../images/istockphoto-1829241109-612x612.jpg";
 export default function Card({ data }) {
+  const defaulimage = data.strMealThumb || myimage;
+
   return (
     <div className={style.meal}>
       <div className={style.mealimage}>
-        <img src={data.strMealThumb} alt={data.strMeal} />
+        <img src={defaulimage} alt={data.strMeal} />
       </div>
       <h3 className={style.mealtitle}>
         {data.strMeal.split(" ").slice(0, 2).join(" ")}
@@ -29,7 +31,6 @@ export default function Card({ data }) {
       )}
 
       <NavLink
-        
         to={`/mealdetails/${data.idMeal}`}
         className={`${style.navlink} ${style.mealbutton}`}
       >
